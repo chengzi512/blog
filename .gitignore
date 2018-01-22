@@ -1,2 +1,4 @@
+.DS_Store
+.git
 .idea
-web.config
+node_modules/

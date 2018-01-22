@@ -1,0 +1,34 @@
+{
+  "name": "onlycozj",
+  "version": "1.0.0",
+  "description": "个人博客",
+  "main": "main",
+  "scripts": {
+    "dev": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/onlycozj/onlycozj.git"
+  },
+  "keywords": [
+    "onlycozj",
+    "个人博客",
+    "前端"
+  ],
+  "author": "onlycozj",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-less": "^3.4.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {}
+}
