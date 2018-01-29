@@ -6,7 +6,7 @@ var fs=require('fs');
 var mine=require('./mine').types;
 var path=require('path');
 
-const documentRoot = 'D:/project/blog'
+const documentRoot = 'E:/20180122/blog'
 
 var server = http.createServer(function (request, response) {
     var pathname = url.parse(request.url).pathname;

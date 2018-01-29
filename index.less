@@ -10,10 +10,14 @@
 .text-center, .ql-align-center{
   text-align: center;
 }
+a{
+  transition: color 0.4s ease;
+}
 body{
   font-size: 15px;
   padding: 0;
   margin: 0;
+  font-family: "Square721 Cn BT";
   aside{
     width: 250px;
     position: absolute;
@@ -96,8 +100,6 @@ body{
       }
     }
     .z-container{
-      max-width: 1000px;
-      margin: 0 auto;
       .end-list{
         border-bottom: 1px solid #ddd;
         border-top: 1px solid #fff;
@@ -147,6 +149,39 @@ body{
         a{
           color: #2479CC;
           text-decoration: none;
+        }
+      }
+    }
+  }
+}
+#archives{
+  section{
+
+  }
+  ul{
+    margin: 0;
+    list-style-type: square;
+    padding-left: 20px;
+    li{
+      line-height: 26px;
+      a{
+        text-decoration: none;
+        color: #4a75b5;
+        &:hover{
+          color: #e58c7c;
+        }
+      }
+      span{
+        font-size: 12px;
+        color: #666;
+        vertical-align: top;
+        white-space: nowrap;
+        padding-left: 2px;
+        a{
+          color: #555;
+          &:hover{
+            color: #e58c7c;
+          }
         }
       }
     }

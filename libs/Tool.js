@@ -1,4 +1,3 @@
-import 'whatwg-fetch'
 const target = 'http://localhost:8001';
 const Tool = {};
 

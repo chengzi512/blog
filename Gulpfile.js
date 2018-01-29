@@ -10,7 +10,7 @@ const gulp = require('gulp'),//基础库
 
 
 const cssFiles=['./index.less'],
-    jsFiles=['!./assets/**/*.js'],
+    jsFiles=['./pages/**/*.js', '!./assets/**/*.js'],
     htmlFiles=['./*.pug','!./layout.pug', '!./aside.pug', '!./template/**/*.pug'],
     pagesFiles=['./pages/**/*.pug'],
     outUrl='./';
