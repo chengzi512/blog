@@ -1,49 +1,37 @@
 extends layout.pug
+include ./template/mixin.pug
 block title
    | 归档页面
 block body
+   -
+      var archiceList = [
+         {
+             date:'2018年1月',
+             articleList:[
+             {
+                 href:'#',
+                 title:'node搭建本地服务器',
+                 date:'2018.1.3',
+                 tag:[{name:'node',href:'##'},{name:'webpack',href:'#'}]
+             },
+             {
+                 href:'#',
+                 title:'node',
+                 date:'2018.1.1',
+                 tag:[{name:'node',href:'##'},{name:'webpack',href:'#'}]
+             }
+             ]
+         }
+      ]
+
    #archives
       h2 归档
-      section
-         div.time 2018年1月(1)
-         ul.list
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span (
-                  span 2018.1.1
-                  span · tag:
-                  a node
-                  span 、
-                  a webpack
-                  span ·
-                  span )
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-      p
-         div.time 2018年2月(12)
-         ul.list
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
-            li
-               a(href='./pages/node_server.html') node搭建本地服务器
-               span 2018-1-1
+      each item in archiceList
+         section
+            div.time #{item.date}(
+               | #{item.articleList.length})
+            ul.list
+               each r in item.articleList
+                  li
+                     a(href=r.href) #{r.title}
+                     +tag(r.date,r.tag)

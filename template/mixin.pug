@@ -1,0 +1,19 @@
+mixin meta(name,content)
+    - content||(content='')
+    meta(name=name, content=content)&attributes(attributes)
+
+mixin link(href,rel)
+    - rel||(rel='stylesheet')
+    link(rel=rel, href=href)&attributes(attributes)
+
+mixin tag(date,data)
+    span (
+        span
+        | #{date}
+        span - tag:
+        each item, index in data
+            a(href=item.href)&attributes(attributes) #{item.name}
+            unless index >= data.length - 1
+                span 、
+        span -
+        span )
