@@ -154,6 +154,9 @@ body main .z-container .archives a {
   color: #2479CC;
   text-decoration: none;
 }
+body main .z-container .time {
+  color: #808080;
+}
 #archives ul {
   margin: 0;
   list-style-type: square;
@@ -168,6 +171,9 @@ body main .z-container .archives a {
 }
 #archives ul li a:hover {
   color: #e58c7c;
+}
+#archives ul li > span {
+  margin-left: 10px;
 }
 #archives ul li span {
   font-size: 12px;

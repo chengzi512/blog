@@ -10,9 +10,11 @@ const gulp = require('gulp'),//基础库
 
 
 const cssFiles=['./index.less'],
-    jsFiles=['./pages/**/*.js', '!./assets/**/*.js'],
+    jsFiles=['./*.js', '!./assets/**/*.js', '!./Gulpfile.js'],
     htmlFiles=['./*.pug','!./layout.pug', '!./aside.pug', '!./template/**/*.pug'],
-    pagesFiles=['./pages/**/*.pug'],
+    cssPage=['./page/**/*.less'],
+    jsPage=['./pages/**/*.js', '!./assets/**/*.js'],
+    htmlPage=['./pages/**/*.pug'],
     outUrl='./';
 /*CSS处理*/
 gulp.task('css', function () {
@@ -40,8 +42,30 @@ gulp.task('pug', function () {
         .pipe(pug({pretty: true}))
         .pipe(gulp.dest(outUrl))
 });
+
+/*page文件处理*/
+/*CSS处理*/
+gulp.task('page-css', function () {
+    return gulp.src(cssPage)
+        .pipe(less())
+        .pipe(postcss([ autoprefixer() ]))
+        .pipe(gulp.dest(outUrl))
+        .pipe(cleanCSS())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(outUrl + 'pages'))
+});
+/*JS处理*/
+gulp.task('page-js', function () {
+    return gulp.src(jsPage)
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(outUrl + 'pages'))
+});
 gulp.task('page-pug', function () {
-    return gulp.src(pagesFiles)
+    return gulp.src(htmlPage)
         .pipe(pug({pretty: true}))
         .pipe(gulp.dest(outUrl + 'pages'))
 });
@@ -50,5 +74,7 @@ gulp.task('default',()=>{
     gulp.watch(cssFiles,['css']);
     gulp.watch(jsFiles,['js']);
     gulp.watch(htmlFiles,['pug']);
-    gulp.watch(pagesFiles,['page-pug']);
+    gulp.watch(cssPage,['page-css']);
+    gulp.watch(jsPage,['page-js']);
+    gulp.watch(htmlPage,['page-pug']);
 });

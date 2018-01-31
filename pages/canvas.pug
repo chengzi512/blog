@@ -3,9 +3,11 @@ block title
     | canvas
 block body
     .z-container
-        .title canvas
+        .title
+            h1 canvas
         .time 2018年1月
         .content
             canvas#canvas(width='400px', height='300') 404
 block script
-    script(src='./canvas.js')
+    script(src='./canvas.min.js')
+block style
