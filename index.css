@@ -20,7 +20,7 @@ body {
   font-size: 15px;
   padding: 0;
   margin: 0;
-  font-family: "Square721 Cn BT";
+  font-family: Square721 Cn BT, Georgia, serif;
 }
 body aside {
   width: 250px;
@@ -159,7 +159,7 @@ body main .z-container .time {
 }
 #archives ul {
   margin: 0;
-  list-style-type: square;
+  list-style-type: circle;
   padding-left: 20px;
 }
 #archives ul li {
@@ -187,4 +187,21 @@ body main .z-container .time {
 }
 #archives ul li span a:hover {
   color: #e58c7c;
+}
+#about .content strong {
+  display: block;
+  width: 80%;
+  font-size: 18px;
+  border-bottom: 1px dashed #ccc;
+  line-height: 30px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding-bottom: 8px;
+}
+#about .modify-time {
+  padding: 20px;
+  text-align: center;
+  background: #f8f8f8;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
 }

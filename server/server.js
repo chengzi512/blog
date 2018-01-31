@@ -7,6 +7,7 @@ var mine=require('./mine').types;
 var path=require('path');
 
 const documentRoot = 'E:/20180122/blog'
+// const documentRoot = 'D:/project/blog'
 
 var server = http.createServer(function (request, response) {
     var pathname = url.parse(request.url).pathname;
@@ -15,7 +16,6 @@ var server = http.createServer(function (request, response) {
     }
     var realPath = path.join(documentRoot, pathname);
     // var realPath = documentRoot + pathname;
-    console.log('rrr',realPath,pathname)
     var ext = path.extname(realPath);
     ext = ext ? ext.slice(1) : 'unknown';
     fs.exists(realPath, function (exists) {

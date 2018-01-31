@@ -9,10 +9,11 @@ mixin link(href,rel)
 mixin tag(date,data)
     span (
         | #{date}
-        | - 标签:
-        each item, index in data
-            a(href=item.href)&attributes(attributes) #{item.name}
-            unless index >= data.length - 1
-                | 、
-        span -
+        unless data.length === 0
+            | - 标签:
+            each item, index in data
+                a(href=item.href)&attributes(attributes) #{item.name}
+                unless index >= data.length - 1
+                    | 、
+            span -
         span )
