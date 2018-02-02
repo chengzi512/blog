@@ -10,10 +10,10 @@ const gulp = require('gulp'),//基础库
 
 
 const cssFiles=['./index.less'],
-    jsFiles=['./*.js', '!./assets/**/*.js', '!./Gulpfile.js'],
+    jsFiles=['./*.js', '!./assets/**/*.js','!.//*.min.js', '!./Gulpfile.js'],
     htmlFiles=['./*.pug','!./layout.pug', '!./aside.pug', '!./template/**/*.pug'],
     cssPage=['./page/**/*.less'],
-    jsPage=['./pages/**/*.js', '!./assets/**/*.js'],
+    jsPage=['./pages/**/*.js','./pages/**/*.min.js', '!./assets/**/*.js'],
     htmlPage=['./pages/**/*.pug'],
     outUrl='./';
 /*CSS处理*/

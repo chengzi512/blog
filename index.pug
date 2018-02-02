@@ -2,15 +2,26 @@ extends layout.pug
 block title
    | z-im
 block body
+   -
+      var list = [
+         {
+             href:'./pages/pdf.html',
+             title:'利用html5实现pdf在线预览',
+             date:'2018年2月2日',
+             cate:'pdf',
+             desc:'文章描述……'
+         }
+      ]
    .z-container
-      section.end-list.ql-snow
-         .title.pull-left
-            a(href="./pages/node_server.html") node搭建本地服务器分享
-         .meta.pull-right
-            .time 2018-1-1
-            .cate node
-         .desc  安装node环境
-         .more
-            a(href="./pages/node_server.html") 阅读全文
+      each item in list
+         section.end-list.ql-snow
+            .title.pull-left
+               a(href=item.href) #{item.title}
+            .meta.pull-right
+               .time #{item.date}
+               .cate #{item.cate}
+            .desc  #{item.desc}
+            .more
+               a(href=item.href) 阅读全文
       .archives.text-center
          a(href='./archives.html') 归档
