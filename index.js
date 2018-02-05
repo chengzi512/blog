@@ -14,7 +14,7 @@ pageAdap();
 window.addEventListener('resize', pageAdap);
 
 // 小分辨率下导航切换
-document.querySelector('.side-trigger').onclick = ()=>{
+document.querySelector('.side-trigger').addEventListener('click',()=>{
     var nav = document.getElementsByTagName('nav')[0];
     if(nav.style.display){
         nav.firstElementChild.style.width = '0';
@@ -29,4 +29,4 @@ document.querySelector('.side-trigger').onclick = ()=>{
             nav.firstElementChild.style.width = '50%';
         },100)
     }
-}
+})
