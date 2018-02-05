@@ -14,23 +14,20 @@ pageAdap();
 window.addEventListener('resize', pageAdap);
 
 // 小分辨率下导航切换
-const sideTrigger = (e)=>{
-    if(['NAV','DIV','I'].indexOf(e.target.nodeName) > -1){
-        var nav = document.getElementsByTagName('nav')[0];
-        if(nav.style.display){
-            nav.firstElementChild.style.width = '0';
-            setTimeout(()=>{
-                nav.removeAttribute('style');
-            },400);
-        }else{
-            nav.style.display = 'block';
-            nav.style.opacity = '1';
-            nav.style.visibility = 'visible';
-            setTimeout(()=>{
-                nav.firstElementChild.style.width = '50%';
-                nav.addEventListener('click',sideTrigger);
-            },100);
-        }
+const sideTrigger = ()=>{
+    var nav = document.getElementsByTagName('nav')[0];
+    if(nav.style.display){
+        nav.firstElementChild.style.width = '0';
+        setTimeout(()=>{
+            nav.removeAttribute('style');
+        },400);
+    }else{
+        nav.style.display = 'block';
+        nav.style.opacity = '1';
+        nav.style.visibility = 'visible';
+        setTimeout(()=>{
+            nav.firstElementChild.style.width = '50%';
+        },100);
     }
 }
 document.querySelector('.side-trigger').addEventListener('click',sideTrigger)
