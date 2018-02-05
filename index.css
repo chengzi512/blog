@@ -239,6 +239,7 @@ body main footer .copyright {
   }
   body aside nav {
     clear: both;
+    display: none;
     background-color: #0000009e;
     position: absolute;
     top: 60px;
