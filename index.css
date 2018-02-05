@@ -255,7 +255,10 @@ body main footer .copyright {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 50%;
+    width: 0;
+    height: 100%;
+    -webkit-transition: width 0.3s ease;
+    transition: width 0.3s ease;
   }
   body aside nav ul li {
     border-bottom: 1px dotted #666;

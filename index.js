@@ -12,3 +12,21 @@ const pageAdap = ()=>{
 };
 pageAdap();
 window.addEventListener('resize', pageAdap);
+
+// 小分辨率下导航切换
+document.querySelector('.side-trigger').onclick = ()=>{
+    var nav = document.getElementsByTagName('nav')[0];
+    if(nav.style.display){
+        nav.firstElementChild.style.width = '0';
+        setTimeout(()=>{
+            nav.removeAttribute('style');
+        },400)
+    }else{
+        nav.style.display = 'block';
+        nav.style.opacity = '1';
+        nav.style.visibility = 'visible';
+        setTimeout(()=>{
+            nav.firstElementChild.style.width = '50%';
+        },100)
+    }
+}
