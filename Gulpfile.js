@@ -11,7 +11,7 @@ const gulp = require('gulp'),//基础库
 
 const cssFiles=['./index.less'],
     jsFiles=['./*.js', '!./assets/**/*.js','!.//*.min.js', '!./Gulpfile.js'],
-    htmlFiles=['./*.pug','!./layout.pug', '!./aside.pug', '!./template/**/*.pug'],
+    htmlFiles=['./*.pug','!./layout.pug', '!./aside.pug', '!./config/**/*.pug', '!./template/**/*.pug'],
     cssPage=['./page/**/*.less'],
     jsPage=['./pages/**/*.js','./pages/**/*.min.js', '!./assets/**/*.js'],
     htmlPage=['./pages/**/*.pug'],

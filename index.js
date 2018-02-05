@@ -10,5 +10,5 @@ const pageAdap = ()=>{
         footer.removeAttribute('style')
     }
 };
-pageAdap()
+pageAdap();
 window.addEventListener('resize', pageAdap);

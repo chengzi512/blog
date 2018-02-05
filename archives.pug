@@ -3,21 +3,7 @@ include ./template/mixin.pug
 block title
    | 归档 - z-im
 block body
-   -
-      var archiceList = [
-         {
-             date:'2018年2月',
-             articleList:[
-             {
-                 href:'./pages/pdf.html',
-                 title:'利用html5实现pdf在线预览',
-                 date:'2018.2.2',
-                 tag:[]
-             }
-             ]
-         }
-      ]
-
+   include data/archives.pug
    #archives.z-container
       h2 归档
       each item in archiceList
