@@ -20,8 +20,10 @@ const sideTrigger = ()=>{
         nav.firstElementChild.style.width = '0';
         setTimeout(()=>{
             nav.removeAttribute('style');
+            document.querySelector('i.z-menu').removeAttribute('style');
         },400);
     }else{
+        document.querySelector('i.z-menu').style.color = '#71b5b9';
         nav.style.display = 'block';
         nav.style.opacity = '1';
         nav.style.visibility = 'visible';
