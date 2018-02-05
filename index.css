@@ -105,43 +105,46 @@ body main footer .copyright {
   font-size: 12px;
   text-align: center;
 }
-body main .z-container .end-list {
+#home .end-list {
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #fff;
   position: relative;
   padding: 30px 0;
   word-wrap: break-word;
 }
-body main .z-container .end-list .title {
+#home .end-list .title {
   font-size: 2em;
   font-weight: 300;
   line-height: 35px;
   margin-bottom: 25px;
   color: #333;
 }
-body main .z-container .end-list .title a {
+#home .end-list .title a {
   text-decoration: none;
 }
-body main .z-container .end-list .meta {
+#home .end-list .meta {
   color: #555;
   font-size: .9em;
   line-height: 1.5;
   text-align: right;
 }
-body main .z-container .end-list .desc {
+#home .end-list .meta .time {
+  color: #808080;
+}
+#home .end-list .desc {
   clear: left;
   font-size: 16px;
   line-height: 1.8;
   word-wrap: break-word;
 }
-body main .z-container .end-list .desc img {
+#home .end-list .desc img {
   max-width: 640px;
 }
-body main .z-container .end-list .more a {
+#home .end-list .more a {
   color: #2479CC;
   text-decoration: none;
 }
-body main .z-container .archives {
+#home .archives {
   width: 100%;
   line-height: 20px;
   position: relative;
@@ -150,12 +153,9 @@ body main .z-container .archives {
   padding: 20px 0;
   overflow: hidden;
 }
-body main .z-container .archives a {
+#home .archives a {
   color: #2479CC;
   text-decoration: none;
-}
-body main .z-container .time {
-  color: #808080;
 }
 #archives ul {
   margin: 0;
@@ -204,4 +204,58 @@ body main .z-container .time {
   background: #f8f8f8;
   border-top: 1px dashed #ccc;
   border-bottom: 1px dashed #ccc;
+}
+@media screen and (max-width: 800px) {
+  body aside {
+    width: 100%;
+    height: 60px;
+    bottom: auto;
+    position: initial;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+  body aside #logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+    float: left;
+  }
+  body aside #logo a {
+    display: initial;
+  }
+  body aside #logo a img {
+    width: 70px;
+    height: 40px;
+  }
+  body aside .side-trigger {
+    float: right;
+    padding-right: 10px;
+    line-height: 60px;
+    height: 60px;
+  }
+  body aside .side-trigger i {
+    color: #FFF;
+    font-size: 20px;
+  }
+  body aside nav {
+    clear: both;
+    background-color: #0000009e;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  body aside nav ul {
+    background-color: #202020;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+  }
+  body main {
+    left: 0;
+    top: 250px;
+  }
 }
