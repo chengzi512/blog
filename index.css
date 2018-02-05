@@ -267,4 +267,7 @@ body main footer .copyright {
     left: 0;
     top: 60px;
   }
+  #home .end-list .title {
+    font-size: 1em;
+  }
 }

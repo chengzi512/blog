@@ -11,7 +11,7 @@ block body
             .meta.pull-right
                .time #{item.date}
                .cate #{item.cate}
-            .desc  #{item.desc}
+            .desc!=item.desc
             .more
                a(href=item.href) 阅读全文
       .archives.text-center
