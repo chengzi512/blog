@@ -15,6 +15,7 @@ window.addEventListener('resize', pageAdap);
 
 // 小分辨率下导航切换
 const sideTrigger = (e)=>{
+    alert(e.target.nodeName)
     if(['NAV','DIV','I'].indexOf(e.target.nodeName) > -1){
         var nav = document.getElementsByTagName('nav')[0];
         if(nav.style.display){
