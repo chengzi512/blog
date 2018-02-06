@@ -77,4 +77,5 @@ gulp.task('default',()=>{
     gulp.watch(cssPage,['page-css']);
     gulp.watch(jsPage,['page-js']);
     gulp.watch(htmlPage,['page-pug']);
+    gulp.watch(['./**/*.pug'],['pug', 'page-pug']);
 });

@@ -1,4 +1,4 @@
-extends layout.pug
+extends ./template/layout
 block title
    | z-im
 block body
@@ -13,6 +13,6 @@ block body
                .cate #{item.cate}
             .desc!=item.desc
             .more
-               a(href=item.href) 阅读全文
+               a(href=item.href) 阅读全文1
       .archives.text-center
          a(href='./archives.html') 归档
