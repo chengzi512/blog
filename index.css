@@ -276,3 +276,7 @@ body main footer .copyright {
   font-weight: bold;
   padding-bottom: 10px;
 }
+.z-container .content .eg {
+  height: 200px;
+  border-bottom: 1px dashed #81b78b;
+}
