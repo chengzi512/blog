@@ -52,6 +52,11 @@ body aside #logo a img {
   overflow: hidden;
   border: none;
 }
+body aside .side-trigger {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
 body aside nav {
   z-index: 9;
   background-color: #202020;
@@ -229,6 +234,9 @@ body main footer .copyright {
     height: 40px;
   }
   body aside .side-trigger {
+    display: block;
+    opacity: 1;
+    visibility: visible;
     float: right;
     padding-right: 10px;
     line-height: 60px;
