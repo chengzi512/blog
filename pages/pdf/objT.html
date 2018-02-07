@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Object详解 - z-im.com
+    <title>object和embed - z-im.com
     </title>
     <meta name="keyword" content="z-im.com,前端分享,个人博客">
     <meta name="description" content="z-im.com，分享前端技术">
@@ -29,26 +29,56 @@
     <main>
       <div class="z-container">
         <div class="title">
-          <h1>Object详解</h1>
+          <h1>object和embed</h1>
         </div>
         <div class="time">2018年2月6日10:38:22</div>
         <div class="content">
-          <p>HTML &lt;object&gt; 标签，几乎所有主流浏览器都拥有部分对 &lt;object&gt; 标签的支持。定义一个嵌入的对象。请使用此元素向您的 XHTML 页面添加多媒体。此元素允许您规定插入 HTML 文档中的对象的数据和参数，以及可用来显示和操作数据的代码。</p>
-          <p>&lt;object&gt; 标签用于包含对象，比如图像、音频、视频、Java applets、ActiveX、PDF 以及 Flash。</p>
-          <p>object 的初衷是取代 img 和 applet 元素。不过由于漏洞以及缺乏浏览器支持，这一点并未实现。</p>
-          <p>浏览器的对象支持有赖于对象类型。不幸的是，主流浏览器都使用不同的代码来加载相同的对象类型。</p>
-          <p>而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 &lt;object&gt; 和 &lt;/object&gt; 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。</p>
-          <p>除了width和height，可选的参数有哪些？</p>
-          <p>
+          <div class="section">
+            <div class="subTitle">1、Object</div>
+            <p>HTML &lt;object&gt; 标签，几乎所有主流浏览器都拥有部分对 &lt;object&gt; 标签的支持。定义一个嵌入的对象。请使用此元素向您的 XHTML 页面添加多媒体。此元素允许您规定插入 HTML 文档中的对象的数据和参数，以及可用来显示和操作数据的代码。</p>
+            <p>&lt;object&gt; 标签用于包含对象，比如图像、音频、视频、Java applets、ActiveX、PDF 以及 Flash。</p>
+            <p>object 的初衷是取代 img 和 applet 元素。不过由于漏洞以及缺乏浏览器支持，这一点并未实现。</p>
+            <p>浏览器的对象支持有赖于对象类型。不幸的是，主流浏览器都使用不同的代码来加载相同的对象类型。</p>
+            <p>而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 &lt;object&gt; 和 &lt;/object&gt; 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。</p>
             <ul>
-              <li>1、align(left/right/top/bottom) 文本对齐方式</li>
-              <li>2、data(url) 规定对象使用的资源的 URL。</li>
-              <li>3、standby</li>
+              <li>1、data(url) 规定对象使用的资源的 URL。</li>
+              <li>2、name 为对象定义唯一的名称（以便在脚本中使用）。</li>
+              <li>3、width 定义对象的宽度。</li>
+              <li>4、height 定义对象的高度。</li>
+              <li>4、type 定义被规定在 data 属性中指定的文件中出现的数据的 MIME 类型。</li>
             </ul>
-          </p>
-          <p class="eg">
-            <object align="left" width="150" height="150" style="border:1px solid grey;" data="/assets/flash/helloworld.swf" standby="定义当对象正在加载时所显示的文本。"></object>
-          </p>
+            <p class="eg">
+              <object width="100%" height="150" name="objFlash" style="border:1px solid grey;" data="/assets/flash/helloworld.swf"></object>
+            </p>
+            <p>PS：<a href="https://get2.adobe.com/cn/flashplayer/" target="_blank">检查flash是否是最新的</a></p>
+            <div class="eg">
+              <div style="height:450px;">
+                <object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/assets/pdf/1.pdf" type="application/pdf"></object>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <div class="subTitle">2、embed</div>
+            <p><embed> 标签定义嵌入的内容，比如插件。</p>
+            <ul>
+              <li>1、type 设置或返回 embed 元素中 type 属性的值。</li>
+              <li>2、src 设置或返回 embed 元素中 src 属性的值。</li>
+              <li>3、width 设置或返回 embed 元素中 width 属性的值。</li>
+              <li>4、height 设置或返回 embed 元素中 height 属性的值。</li>
+            </ul>
+            <p>embed加载flash是所有浏览器都ok的</p>
+            <div class="eg">
+              <embed width="100%" height="150" id="embFlash" style="border:1px solid grey;" src="/assets/flash/helloworld.swf">
+            </div>
+            <p>embed加载flash是所有浏览器都ok的,但是加载pdf文件在firfox上就不行了，加载音频在firfox和opera上都不行</p>
+            <div class="eg" style="height:450px;">
+              <embed width="100%" height="400" id="embPdf" style="border:1px solid grey;" src="/assets/pdf/1.pdf" type="application/pdf">
+            </div>
+          </div>
+          <div class="section">
+            <div class="subTitle">0、总结</div>
+            <p>在实际项目中如果用原生html的话一般都是两个一起用，避免一些浏览器不支持的情况，加载flash貌似还好吧，但是加载pdf或者音频、视频都就会出问题。</p>
+          </div>
         </div>
       </div>
       <footer>

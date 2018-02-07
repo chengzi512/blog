@@ -47,7 +47,25 @@
           <p>浏览器的对象支持有赖于对象类型。不幸的是，主流浏览器都使用不同的代码来加载相同的对象类型。</p>
           <p>而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 &lt;object&gt; 和 &lt;/object&gt; 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。</p>
           <p>先简单了解一下Object的参数和属性</p>
-          <p><a href="/pages/pdf/objT.html">objT</a></p>
+          <p>你可以采用object或者embed来装载，一般建议两个一起用。</p>
+          <p><a href="/pages/pdf/objT.html">这里有做了一个object和embed的知识的简单总结</a></p><code>
+            <p>&lt;object width=&quot;100%&quot; height=&quot;400&quot; name=&quot;objPdf&quot; style=&quot;border:1px solid grey;&quot; data=&quot;/assets/pdf/1.pdf&quot;&gt;</p>
+            
+            <p class="tin">&lt;embed src=&quot;/assets/flash/helloworld.swf&quot; style=&quot;border:1px solid grey;&quot; id=&quot;embFlash&quot; width=&quot;100%&quot; height=150&gt;</p>
+            
+            <p style="text-indent:3.6rem;">你的浏览器暂时不支持在线查看pdf</p>
+            
+            <p class="tin">&lt;/embed&gt;</p>
+            
+            <p>&lt;/object&gt;</p></code>
+          <div class="eg">
+            <div style="height:450px;">
+              <object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/assets/pdf/1.pdf" type="application/pdf">
+                <embed width="100%" height="400" id="embPdf" style="border:1px solid grey;" src="/assets/pdf/1.pdf" type="application/pdf">
+              </object>
+            </div>
+          </div>
+          <div class="subTitle">方式二：利用PDFObject插件</div>
         </div>
       </div>
       <footer>

@@ -20,7 +20,34 @@ block body
             p='浏览器的对象支持有赖于对象类型。不幸的是，主流浏览器都使用不同的代码来加载相同的对象类型。'
             p=`而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 <object> 和 </object> 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。`
             p 先简单了解一下Object的参数和属性
+            p 你可以采用object或者embed来装载，一般建议两个一起用。
             p
-                a(href='/pages/pdf/objT.html') objT
+                a(href='/pages/pdf/objT.html') 这里有做了一个object和embed的知识的简单总结
+            code.
+                #[p=`<object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/assets/pdf/1.pdf">`]
+                #[p.tin=`<embed src="/assets/flash/helloworld.swf" style="border:1px solid grey;" id="embFlash" width="100%" height=150>`]
+                #[p(style="text-indent:3.6rem")=`你的浏览器暂时不支持在线查看pdf`]
+                #[p.tin=`</embed>`]
+                #[p=`</object>`]
+            .eg
+                div(style="height:450px;")
+                    object(
+                    width="100%",
+                    height=400,
+                    name="objPdf",
+                    style="border:1px solid grey;",
+                    data="/assets/pdf/1.pdf",
+                    type="application/pdf"
+                    )
+                        embed(
+                        width="100%",
+                        height=400,
+                        id="embPdf",
+                        style="border:1px solid grey;",
+                        src="/assets/pdf/1.pdf",
+                        type="application/pdf"
+                        )
+            .subTitle 方式二：利用PDFObject插件
+
 
 

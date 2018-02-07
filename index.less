@@ -43,6 +43,7 @@ body{
           height: 90px;
           margin: 0 auto;
           overflow: hidden;
+          border:none;
         }
       }
     }
@@ -290,14 +291,42 @@ body{
 
 .z-container{
   .content{
+    p{
+      word-wrap: break-word;
+      word-break: break-all;
+      .tin{
+        text-indent: 30px;
+      }
+    }
     .subTitle{
       font-size: 18px;
       font-weight: bold;
       padding-bottom: 10px;
     }
     .eg{
-      height: 200px;
+      min-height: 200px;
+      height: auto;
       border-bottom: 1px dashed #81b78b;
     }
+    code{
+      display: block;
+      max-width: 100%;
+      padding: 5px 10px;
+      background-color: #333;
+      font-size: 1.2rem;
+      color:#FFF;
+      word-wrap: break-word;
+      word-break: break-all;
+      margin: 20px 0;
+      .tin{
+        text-indent: 2.4rem;
+      }
+    }
   }
+}
+
+.hide{
+  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
