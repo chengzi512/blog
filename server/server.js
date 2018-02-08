@@ -11,11 +11,12 @@ const documentRoot = 'E:/blog'
 
 var server = http.createServer(function (request, response) {
     var pathname = url.parse(request.url).pathname;
-    if(!pathname || pathname === '/'){
-        pathname = 'index.html'
+    if(!pathname || pathname.substr(pathname.length-1, 1) === '/'){
+        pathname = pathname + 'index.html'
+    }else if(pathname.substr(pathname.length-1, 1) != 'l' && pathname.substr(pathname.length-5, 5) != '.html' && pathname.substr(pathname.length-5, 5).indexOf('.') === -1){
+        pathname = pathname + '/index.html'
     }
     var realPath = path.join(documentRoot, pathname);
-    // var realPath = documentRoot + pathname;
     var ext = path.extname(realPath);
     ext = ext ? ext.slice(1) : 'unknown';
     fs.exists(realPath, function (exists) {

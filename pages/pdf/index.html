@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-png">
     <link rel="stylesheet" type="text/css" href="/assets/iconfonts/iconfont.css">
-    <link rel="stylesheet" type="text/css" href="/index.css">
+    <link rel="stylesheet" type="text/css" href="/index.min.css">
   </head>
   <body>
     <aside>
@@ -39,7 +39,6 @@
           </p>
           <p>针对pdf在线预览我觉得还是可以记录一下。</p>
           <p>现代浏览器似乎都是支持pdf查看的，都是基于pdf.js做了浏览器扩展。</p>
-          <p>这儿我就不罗列网上的方法了，度娘一搜一大把，我说说我的方式吧：</p>
           <div class="subTitle">方式一：原生html实现</div>
           <p>HTML &lt;object&gt; 标签，几乎所有主流浏览器都拥有部分对 &lt;object&gt; 标签的支持。定义一个嵌入的对象。请使用此元素向您的 XHTML 页面添加多媒体。此元素允许您规定插入 HTML 文档中的对象的数据和参数，以及可用来显示和操作数据的代码。</p>
           <p>&lt;object&gt; 标签用于包含对象，比如图像、音频、视频、Java applets、ActiveX、PDF 以及 Flash。</p>
@@ -51,7 +50,7 @@
           <p><a href="/pages/pdf/objT.html">这里有做了一个object和embed的知识的简单总结</a></p><code>
             <p>&lt;object width=&quot;100%&quot; height=&quot;400&quot; name=&quot;objPdf&quot; style=&quot;border:1px solid grey;&quot; data=&quot;/assets/pdf/1.pdf&quot;&gt;</p>
             
-            <p class="tin">&lt;embed src=&quot;/assets/flash/helloworld.swf&quot; style=&quot;border:1px solid grey;&quot; id=&quot;embFlash&quot; width=&quot;100%&quot; height=150&gt;</p>
+            <p class="tin">&lt;embed src=&quot;/assets/pdf/1.pdf&quot; style=&quot;border:1px solid grey;&quot; id=&quot;embFlash&quot; width=&quot;100%&quot; height=150&gt;</p>
             
             <p style="text-indent:3.6rem;">你的浏览器暂时不支持在线查看pdf</p>
             
@@ -66,6 +65,30 @@
             </div>
           </div>
           <div class="subTitle">方式二：利用PDFObject插件</div>
+          <p>
+            利用插件的好处就是，有问题的时候插件可以帮你，当然如果你不想要这种解决方案，要么你自己搞，要么你扩展插件的功能。
+            譬如说在firfox上下边的内容就打上浏览器不支持pdf在线预览的提示，然后给定下载地址。方式1的模式我就没有自己处理浏览器不支持的情况处理。
+          </p><code>
+            <p>&lt;div id=&quot;pdfObject-container&quot; style=&quot;width:100%;height:400px;&quot;&gt;&lt;/div&gt;</p>
+            
+            <p>&lt;script&gt;</p>
+            
+            <p class="tin">var options = {</p>
+            
+            <p style="text-indent:3.6rem;">page:2</p>
+            
+            <p class="tin">};</p>
+            
+            <p class="tin">PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)</p>
+            
+            <p>&lt;/script&gt;</p></code>
+          <div class="eg">
+            <div style="height:450px;">
+              <div id="pdfObject-container" style="width:100%;height:400px;"></div>
+            </div>
+          </div>
+          <div class="subTitle">方式三：利用PDF.js插件</div>
+          <p></p>
         </div>
       </div>
       <footer>
@@ -75,3 +98,10 @@
   </body>
 </html>
 <script src="/index.min.js"></script>
+<script src="/libs/PDFObject/pdfobject.min.js"></script>
+<script>
+  var options = {
+      page:2
+  };
+  PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)
+</script>

@@ -12,7 +12,6 @@ block body
                 所以我们就采用博客编辑文章和发布文章的方式给做了，结果不能满足需求，从市场那边出来的很多文档都是pdf格式的。所以新增加pdf上传和pdf在线预览的功能。
             p 针对pdf在线预览我觉得还是可以记录一下。
             p 现代浏览器似乎都是支持pdf查看的，都是基于pdf.js做了浏览器扩展。
-            p 这儿我就不罗列网上的方法了，度娘一搜一大把，我说说我的方式吧：
             .subTitle 方式一：原生html实现
             p='HTML <object> 标签，几乎所有主流浏览器都拥有部分对 <object> 标签的支持。定义一个嵌入的对象。请使用此元素向您的 XHTML 页面添加多媒体。此元素允许您规定插入 HTML 文档中的对象的数据和参数，以及可用来显示和操作数据的代码。'
             p='<object> 标签用于包含对象，比如图像、音频、视频、Java applets、ActiveX、PDF 以及 Flash。'
@@ -25,7 +24,7 @@ block body
                 a(href='/pages/pdf/objT.html') 这里有做了一个object和embed的知识的简单总结
             code.
                 #[p=`<object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/assets/pdf/1.pdf">`]
-                #[p.tin=`<embed src="/assets/flash/helloworld.swf" style="border:1px solid grey;" id="embFlash" width="100%" height=150>`]
+                #[p.tin=`<embed src="/assets/pdf/1.pdf" style="border:1px solid grey;" id="embFlash" width="100%" height=150>`]
                 #[p(style="text-indent:3.6rem")=`你的浏览器暂时不支持在线查看pdf`]
                 #[p.tin=`</embed>`]
                 #[p=`</object>`]
@@ -48,6 +47,31 @@ block body
                         type="application/pdf"
                         )
             .subTitle 方式二：利用PDFObject插件
+            p.
+                利用插件的好处就是，有问题的时候插件可以帮你，当然如果你不想要这种解决方案，要么你自己搞，要么你扩展插件的功能。
+                譬如说在firfox上下边的内容就打上浏览器不支持pdf在线预览的提示，然后给定下载地址。方式1的模式我就没有自己处理浏览器不支持的情况处理。
+            code.
+                #[p=`<div id="pdfObject-container" style="width:100%;height:400px;"></div>`]
+                #[p=`<script>`]
+                #[p.tin=`var options = {`]
+                #[p(style="text-indent:3.6rem")=`page:2`]
+                #[p.tin=`};`]
+                #[p.tin=`PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)`]
+                #[p=`</script>`]
+            .eg
+                div(style="height:450px;")
+                    #pdfObject-container(style="width:100%;height:400px;")
+            .subTitle 方式三：利用PDF.js插件
+            p.
+
+
+block script
+    script(src="/libs/PDFObject/pdfobject.min.js")
+    script.
+        var options = {
+            page:2
+        };
+        PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)
 
 
 
