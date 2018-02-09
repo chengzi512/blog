@@ -1,0 +1,23 @@
+extends ../../template/layout
+block title
+    | canvas实验
+block keyword
+    meta(name="keyword", content="z-im.com,前端分享,个人博客")
+block keyword
+    meta(name="description", content="z-im.com，分享前端技术")
+block style
+    link(rel="stylesheet", type="text/css", href="./index.min.css")
+block body
+    .z-container
+        .title
+            h1 canvas实验
+        .time 2018年2月9日11:40:56
+        .content
+            p 1. canvas实现立方体
+            .eg
+                canvas#canvas(width='500', height='400')
+            p 2. canvas实现拖拽
+            .eg
+                canvas#canvas1(width='500', height='400')
+block script
+    script(src='./index.js')

@@ -12,6 +12,16 @@
 .ql-align-center {
   text-align: center;
 }
+.btn {
+  border: 1px solid #fda802;
+  background-color: rgba(248, 161, 119, 0.13);
+  border-radius: 15px;
+  color: #fda802;
+  font-size: 16px;
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 a {
   -webkit-transition: color 0.4s ease;
   transition: color 0.4s ease;

@@ -1,6 +1,10 @@
 extends ../../template/layout
 block title
     | 利用html5实现pdf在线预览 - z-im.com
+block keyword
+    meta(name="keyword", content="z-im.com,前端分享,个人博客")
+block keyword
+    meta(name="description", content="z-im.com，分享前端技术")
 block body
     .z-container
         .title
@@ -56,7 +60,7 @@ block body
                 #[p.tin=`var options = {`]
                 #[p(style="text-indent:3.6rem")=`page:2`]
                 #[p.tin=`};`]
-                #[p.tin=`PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)`]
+                #[p.tin=`PDFObject.embed("/assets/pdf/1.pdf", "#pdfObject-container", options)`]
                 #[p=`</script>`]
             .eg
                 div(style="height:450px;")

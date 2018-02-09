@@ -2,6 +2,10 @@ extends ./template/layout
 include ./template/mixin.pug
 block title
    | 归档 - z-im
+block keyword
+   meta(name="keyword", content="z-im.com,前端分享,个人博客")
+block keyword
+   meta(name="description", content="z-im.com，分享前端技术")
 block body
    include data/archives.pug
    #archives.z-container
