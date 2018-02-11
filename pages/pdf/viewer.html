@@ -59,9 +59,9 @@
   var loadedPdf = function () {
       setTimeout(function () {
           var iframe = document.getElementById("iframe");
-          iframe.style.height = iframe.contentWindow.document.querySelector('#viewer').offsetHeight + 'px';
+          iframe.style.height = iframe.contentWindow.document.querySelector('#viewer').offsetHeight < 3000 ? 3300 + 'px' : iframe.contentWindow.document.querySelector('#viewer').offsetHeight + 'px';
           pageAdap();
-      },300)
+      },500)
   
   }
 </script>
