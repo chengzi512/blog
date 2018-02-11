@@ -79,3 +79,14 @@ gulp.task('default',()=>{
     gulp.watch(htmlPage,['page-pug']);
     gulp.watch(['./**/*.pug'],['pug', 'page-pug']);
 });
+
+
+gulp.task('temp', function () {
+    return gulp.src(['./libs/pdfjs/build/**/*.js','!./libs/pdfjs/build/**/*.min.js'])
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./libs/pdfjs/build'))
+});

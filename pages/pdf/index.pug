@@ -106,7 +106,7 @@ block script
             page:2
         };
         PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)
-    script(src='/libs/pdfjs/build/pdf.js')
+    script(src='/libs/pdfjs/build/pdf.min.js')
     script.
         PDFJS.getDocument('/assets/pdf/1.pdf').then(function (pdf) {
             console.log(pdf.numPages)
