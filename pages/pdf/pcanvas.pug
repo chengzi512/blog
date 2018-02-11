@@ -1,0 +1,56 @@
+extends ../../template/layout
+block title
+    | pdfjs使用教程-1 - z-im.com
+block keyword
+    meta(name="keyword", content="z-im.com,前端分享,个人博客")
+block keyword
+    meta(name="description", content="z-im.com，分享前端技术")
+block body
+    .z-container
+        .title
+            h1 pdfjs使用教程
+        .time 2018年2月11日14:16:20
+        .content
+            .section
+                .subTitle pdf.js简单实例在线预览，使用canvas来呈现内容。
+                canvas#canvas(style="border:1px solid black;")
+            .bpn 相关文档
+                ol
+                    li
+                        a(href='/pages/pdf/index.html') 利用html5实现pdf在线预览
+                    li
+                        a(href='/pages/pdf/pcanvas.html') 使用canvas来呈现内容
+                    li
+                        a(href='/pages/pdf/pbase64.html') 读取base64的数据
+                    li
+                        a(href='/pages/pdf/ppages.html') 自定义分页功能
+                    li
+                        a(href='/pages/pdf/viewer.html') 使用viewer
+block script
+    script(src='/libs/pdfjs/build/pdf.js')
+    script.
+        PDFJS.getDocument('/assets/pdf/1.pdf').then(function (pdf) {
+            var pageNumber = 1;
+            pdf.getPage(pageNumber).then(function (page) {
+                var scale = document.querySelector('main>.z-container').offsetWidth/page.view[2];
+                console.log('page',scale, page);
+                var viewport = page.getViewport(scale);
+
+                // Prepare canvas using PDF page dimensions.
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = document.querySelector('main>.z-container').offsetWidth;
+
+                // Render PDF page into canvas context.
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+                pageAdap();
+            });
+        }, function (err) {
+            console.error(err)
+        })
+

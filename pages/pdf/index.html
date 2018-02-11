@@ -67,6 +67,16 @@
           <p>
             利用插件的好处就是，有问题的时候插件可以帮你，当然如果你不想要这种解决方案，要么你自己搞，要么你扩展插件的功能。
             譬如说在firfox上下边的内容就打上浏览器不支持pdf在线预览的提示，然后给定下载地址。方式1的模式我就没有自己处理浏览器不支持的情况处理。
+          </p>
+          <p>
+            pdfObject插件所做的事情就是检查浏览器是否支持embed（这里我们称之为承载元素）元素，如果不支持承载元素，那么就给需要显示的位置给出提示信息
+            如果浏览器支持承载元素，它会在需要显示的位置添加embed元素，同时给embed设置data参数。
+          </p>
+          <p>
+            使用这个插件的好处就是你不用自己去判断浏览器是否支持pdf在线预览，同时也不用去过多的关心怎么设置参数。说道设置参数，肯定我们的pdf在线预览的功能还会有很多额外的需求，
+            譬如说，屏蔽下载按钮和打印等功能，因为需求方只想要用户能够浏览pdf的内容，并不想用户下载pdf。那么实践告诉您，通过原生实现和用类似于pdfObject都不能完全满足这样子的需求。
+            我们顶多能够给pdf文件传参数：<code>#navpanes=0&amp;toolbar=0&amp;statusbar=0&amp;view=FitV&amp;zoom=120。</code>
+            如果想要我们来控制页面的显示和按钮的布局，目前来说还是考虑用pdf.js吧！
           </p><code>
             <p>&lt;div id=&quot;pdfObject-container&quot; style=&quot;width:100%;height:400px;&quot;&gt;&lt;/div&gt;</p>
             
@@ -87,7 +97,24 @@
             </div>
           </div>
           <div class="subTitle">方式三：利用PDF.js插件</div>
-          <p></p>
+          <p>这里有实验了四个pdf.js的简单例子，仅供参考。</p>
+          <ul>
+            <li><a href="/pages/pdf/pcanvas.html">使用canvas来呈现内容</a></li>
+            <li><a href="/pages/pdf/pbase64.html">读取base64的数据</a></li>
+            <li><a href="/pages/pdf/ppages.html">自定义分页功能</a></li>
+            <li><a href="/pages/pdf/viewer.html">使用viewer</a></li>
+          </ul>
+          <p>这个插件就比较good了，一开始我用的时候一看一大把，我擦吓尿了，项目上就用了pdfObject直接了事，结果那里边好多定制的东西不能实现，问题都还放那在，结果项目总结的时候看了一下pdf.js，看完代码感觉还是可以。用法也很简单如果是用插件自带的view，直接一个iframe就好了。但是如果需要重新定制，就不是那么high心了，这里简单演示一下呈现吧</p>
+          <div class="eg" id="pdfjsDemo" style="height:450px;overflow: auto;"></div>
+          <div class="bpn">相关文档
+            <ol>
+              <li><a href="/pages/pdf/objT.html">object和embed</a></li>
+              <li><a href="/pages/pdf/pcanvas.html">使用canvas来呈现内容</a></li>
+              <li><a href="/pages/pdf/pbase64.html">读取base64的数据</a></li>
+              <li><a href="/pages/pdf/ppages.html">自定义分页功能</a></li>
+              <li><a href="/pages/pdf/viewer.html">使用viewer</a></li>
+            </ol>
+          </div>
         </div>
       </div>
       <footer>
@@ -103,4 +130,32 @@
       page:2
   };
   PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)
+</script>
+<script src="/libs/pdfjs/build/pdf.js"></script>
+<script>
+  PDFJS.getDocument('/assets/pdf/1.pdf').then(function (pdf) {
+      console.log(pdf.numPages)
+      // var pageNumber = 1;
+      for(var pageNumber = 1;pageNumber <= pdf.numPages; pageNumber++){
+          pdf.getPage(pageNumber).then(function (page) {
+              var scale = (document.querySelector('main>.z-container').offsetWidth - 20) / page.view[2];
+              console.log('page', scale, page);
+              var viewport = page.getViewport(scale);
+              var canvas = document.createElement('CANVAS');
+              var context = canvas.getContext('2d');
+              canvas.height = viewport.height;
+              canvas.width = document.querySelector('main>.z-container').offsetWidth - 20;
+              document.getElementById('pdfjsDemo').appendChild(canvas);
+              // Render PDF page into canvas context.
+              var renderContext = {
+                  canvasContext: context,
+                  viewport: viewport
+              };
+              page.render(renderContext);
+              pageAdap();
+          });
+      }
+  }, function (err) {
+      console.error(err)
+  })
 </script>

@@ -290,6 +290,14 @@ body main footer .copyright {
     font-size: 1em;
   }
 }
+.z-container .content .bpn {
+  padding: 10px;
+}
+.z-container .content .bpn ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .z-container .content p {
   word-wrap: break-word;
   word-break: break-all;

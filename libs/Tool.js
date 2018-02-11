@@ -1,6 +1,6 @@
-const target = 'http://localhost:8001';
+// const target = 'http://localhost:3000';
+const target = '';
 const Tool = {};
-
 /**
  * 封装fetch post请求
  * @param {string} pathname 服务器请求地址
@@ -28,10 +28,17 @@ Tool.get = (pathname,data)=>{
         aData.push(attr + '=' + Tool.filter(data[attr]));
     }
     sData = aData.join('&');
-
-    return fetch(target + pathname + '?' + sData + '&' + new Date().getTime(), {
-        method: "GET"
-    }).then((response) => response.json())
+    // 判断请求为流请求还是api请求
+    var regex = /^(.)+\.(css|gif|html|ico|jpeg|jpg|js|json|pdf|png|svg|swf|tiff|txt|wav|wma|wmv|xml)$/;
+    if(regex.test(pathname)){
+        return fetch(target + pathname + '?' + sData + '&' + new Date().getTime(), {
+            method: "GET"
+        });
+    }else{
+        return fetch(target + pathname + '?' + sData + '&' + new Date().getTime(), {
+            method: "GET"
+            }).then((response) => response.json());
+    }
 };
 /**
  * 特殊字符转义
@@ -129,5 +136,3 @@ Tool.getExplorer = function () {
         return 'Safari';
     };
 };
-
-export {Tool};

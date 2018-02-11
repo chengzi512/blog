@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>pdfjs使用教程-1 - z-im.com
+    </title>
+    <meta name="description" content="z-im.com，分享前端技术">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-png">
+    <link rel="stylesheet" type="text/css" href="/assets/iconfonts/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/index.min.css">
+  </head>
+  <body>
+    <aside>
+      <div id="logo"><a href="/"><img src="/assets/imgs/logo.png" alt="z-im.com"></a></div>
+      <div class="side-trigger"><i class="zim z-menu"></i></div>
+      <nav>
+        <ul>
+          <li><a href="/index.html"><i class="zim z-sy"></i><span>首页</span></a></li>
+          <li><a href="/lab.html"><i class="zim z-sys"></i><span>实验室</span></a></li>
+          <li><a href="/archives.html"><i class="zim z-gd"></i><span>归档</span></a></li>
+          <li><a href="/about.html"><i class="zim z-gy"></i><span>关于</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <div class="z-container">
+        <div class="title">
+          <h1>pdfjs使用教程</h1>
+        </div>
+        <div class="time">2018年2月11日14:22:30</div>
+        <div class="content">
+          <div class="section">
+            <div class="subTitle">pdf.js简单实例在线预览，读取base64的数据。</div>
+            <canvas id="canvas" style="border:1px solid black;"></canvas>
+          </div>
+          <div class="bpn">相关文档
+            <ol>
+              <li><a href="/pages/pdf/index.html">利用html5实现pdf在线预览</a></li>
+              <li><a href="/pages/pdf/pcanvas.html">使用canvas来呈现内容</a></li>
+              <li><a href="/pages/pdf/pbase64.html">读取base64的数据</a></li>
+              <li><a href="/pages/pdf/ppages.html">自定义分页功能</a></li>
+              <li><a href="/pages/pdf/viewer.html">使用viewer</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="copyright">©2014-2018 蜀ICP备14024393号-1</div>
+      </footer>
+    </main>
+  </body>
+</html>
+<script src="/index.min.js"></script>
+<script src="/libs/pdfjs/build/pdf.js"></script>
+<script>
+  var pdfData = atob(
+      'JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwog' +
+      'IC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAv' +
+      'TWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0K' +
+      'Pj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAg' +
+      'L1Jlc291cmNlcyA8PAogICAgL0ZvbnQgPDwKICAgICAgL0YxIDQgMCBSIAogICAgPj4KICA+' +
+      'PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9u' +
+      'dAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvVGltZXMtUm9tYW4KPj4KZW5kb2Jq' +
+      'Cgo1IDAgb2JqICAlIHBhZ2UgY29udGVudAo8PAogIC9MZW5ndGggNDQKPj4Kc3RyZWFtCkJU' +
+      'CjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVu' +
+      'ZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4g' +
+      'CjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAw' +
+      'MDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v' +
+      'dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G');
+  PDFJS.getDocument({data:pdfData}).then(function (pdf) {
+      console.log('pdf加载成功', pdf);
+      var pageNumber = 1;
+      pdf.getPage(pageNumber).then(function (page) {
+          console.log('page', page);
+          var scale = 1.5;
+          var viewport = page.getViewport(scale);
+  
+          // Prepare canvas using PDF page dimensions.
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = document.querySelector('main>.z-container').offsetWidth;
+  
+          // Render PDF page into canvas context.
+          var renderContext = {
+              canvasContext: context,
+              viewport: viewport
+          };
+          page.render(renderContext);
+          pageAdap();
+      });
+  }, function (err) {
+      console.error(err)
+  })
+</script>

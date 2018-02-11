@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>pdfjs使用教程 - z-im.com
+    </title>
+    <meta name="description" content="z-im.com，分享前端技术">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-png">
+    <link rel="stylesheet" type="text/css" href="/assets/iconfonts/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/index.min.css">
+  </head>
+  <body>
+    <aside>
+      <div id="logo"><a href="/"><img src="/assets/imgs/logo.png" alt="z-im.com"></a></div>
+      <div class="side-trigger"><i class="zim z-menu"></i></div>
+      <nav>
+        <ul>
+          <li><a href="/index.html"><i class="zim z-sy"></i><span>首页</span></a></li>
+          <li><a href="/lab.html"><i class="zim z-sys"></i><span>实验室</span></a></li>
+          <li><a href="/archives.html"><i class="zim z-gd"></i><span>归档</span></a></li>
+          <li><a href="/about.html"><i class="zim z-gy"></i><span>关于</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <div class="z-container">
+        <div class="title">
+          <h1>pdfjs使用教程</h1>
+        </div>
+        <div class="time">2018年2月8日14:08:41</div>
+        <div class="content">
+          <div class="section">
+            <div class="subTitle">pdf.js简单实例在线预览功能 == 自定义分页功能</div>
+            <div class="count">当前是<span class="cn">0</span>页，  | 共 <span class="cc">0</span>页</div>
+            <div class="tools">
+              <div class="btn" id="prev">上一页</div>
+              <div class="btn" id="next">下一页</div>
+            </div>
+            <canvas id="canvas" style="border:1px solid black;"></canvas>
+          </div>
+          <div class="bpn">相关文档
+            <ol>
+              <li><a href="/pages/pdf/index.html">利用html5实现pdf在线预览</a></li>
+              <li><a href="/pages/pdf/pcanvas.html">使用canvas来呈现内容</a></li>
+              <li><a href="/pages/pdf/pbase64.html">读取base64的数据</a></li>
+              <li><a href="/pages/pdf/ppages.html">自定义分页功能</a></li>
+              <li><a href="/pages/pdf/viewer.html">使用viewer</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="copyright">©2014-2018 蜀ICP备14024393号-1</div>
+      </footer>
+    </main>
+  </body>
+</html>
+<script src="/index.min.js"></script>
+<script src="/libs/pdfjs/build/pdf.js"></script>
+<script>
+  var url = '/assets/pdf/1.pdf';
+  var pdfDoc = null,
+      pageNum = 1,
+      pageRendering = false,
+      pageNumPending = null,
+      scale = 0.8,
+      canvas = document.getElementById('canvas'),
+      ctx = canvas.getContext('2d');
+  function renderPage(num) {
+      pageRendering = true;
+      pdfDoc.getPage(num).then(function (page) {
+          var viewport = page.getViewport(scale);
+          canvas.height = viewport.height;
+          canvas.width = document.querySelector('main>.z-container').offsetWidth;
+  
+          var renderContext = {
+              canvasContext: ctx,
+              viewport: viewport
+          };
+          var renderTask = page.render(renderContext);
+          pageAdap();
+          renderTask.promise.then(function () {
+              pageRendering = false;
+              if (pageNumPending !== null) {
+                  // New page rendering is pending
+                  renderPage(pageNumPending);
+                  pageNumPending = null;
+              }
+          });
+      });
+      document.querySelector('.cn').textContent = pageNum;
+  }
+  function queueRenderPage(num) {
+      if (pageRendering) {
+          pageNumPending = num;
+      } else {
+          renderPage(num);
+      }
+  }
+  
+  function onPrevPage() {
+      if (pageNum <= 1) {
+          return;
+      }
+      pageNum--;
+      queueRenderPage(pageNum);
+  }
+  document.querySelector('#prev').addEventListener('click', onPrevPage);
+  
+  function onNextPage() {
+      if (pageNum >= pdfDoc.numPages) {
+          return;
+      }
+      pageNum++;
+      queueRenderPage(pageNum);
+  }
+  document.querySelector('#next').addEventListener('click', onNextPage);
+  
+  PDFJS.getDocument(url).then(function (pdfDoc_) {
+      pdfDoc = pdfDoc_;
+      document.querySelector('.cc').textContent = pdfDoc.numPages;
+  
+      renderPage(pageNum);
+  });
+</script>
