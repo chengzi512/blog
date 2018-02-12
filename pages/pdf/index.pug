@@ -25,7 +25,7 @@ block body
             p 先简单了解一下Object的参数和属性
             p 你可以采用object或者embed来装载，一般建议两个一起用。
             p
-                a(href='/pages/pdf/objT.html') 这里有做了一个object和embed的知识的简单总结
+                a(href='/blog/pages/pdf/objT.html') 这里有做了一个object和embed的知识的简单总结
             code.
                 #[p=`<object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/assets/pdf/1.pdf">`]
                 #[p.tin=`<embed src="/assets/pdf/1.pdf" style="border:1px solid grey;" id="embFlash" width="100%" height=150>`]
@@ -39,7 +39,7 @@ block body
                     height=400,
                     name="objPdf",
                     style="border:1px solid grey;",
-                    data="/assets/pdf/1.pdf",
+                    data="/blog/assets/pdf/1.pdf",
                     type="application/pdf"
                     )
                         embed(
@@ -89,26 +89,26 @@ block body
             .bpn 相关文档
                 ol
                     li
-                        a(href='/pages/pdf/objT.html') object和embed
+                        a(href='/blog/pages/pdf/objT.html') object和embed
                     li
-                        a(href='/pages/pdf/pcanvas.html') 使用canvas来呈现内容
+                        a(href='/blog/pages/pdf/pcanvas.html') 使用canvas来呈现内容
                     li
-                        a(href='/pages/pdf/pbase64.html') 读取base64的数据
+                        a(href='/blog/pages/pdf/pbase64.html') 读取base64的数据
                     li
-                        a(href='/pages/pdf/ppages.html') 自定义分页功能
+                        a(href='/blog/pages/pdf/ppages.html') 自定义分页功能
                     li
-                        a(href='/pages/pdf/viewer.html') 使用viewer
+                        a(href='/blog/pages/pdf/viewer.html') 使用viewer
 
 block script
-    script(src="/libs/PDFObject/pdfobject.min.js")
+    script(src="/blog/libs/PDFObject/pdfobject.min.js")
     script.
         var options = {
             page:2
         };
-        PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)
-    script(src='/libs/pdfjs/build/pdf.min.js')
+        PDFObject.embed('/blog/assets/pdf/1.pdf', '#pdfObject-container', options)
+    script(src='/blog/libs/pdfjs/build/pdf.min.js')
     script.
-        PDFJS.getDocument('/assets/pdf/1.pdf').then(function (pdf) {
+        PDFJS.getDocument('/blog/assets/pdf/1.pdf').then(function (pdf) {
             console.log(pdf.numPages)
             // var pageNumber = 1;
             for(var pageNumber = 1;pageNumber <= pdf.numPages; pageNumber++){

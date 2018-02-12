@@ -8,20 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-png">
-    <link rel="stylesheet" type="text/css" href="/assets/iconfonts/iconfont.css">
-    <link rel="stylesheet" type="text/css" href="/index.min.css">
+    <link rel="shortcut icon" href="/blog/assets/imgs/logo.png" type="image/x-png">
+    <link rel="stylesheet" type="text/css" href="/blog/assets/iconfonts/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/blog/index.min.css">
   </head>
   <body>
     <aside>
-      <div id="logo"><a href="/"><img src="/assets/imgs/logo.png" alt="z-im.com"></a></div>
+      <div id="logo"><a href="/blog/"><img src="/blog/assets/imgs/logo.png" alt="z-im.com"></a></div>
       <div class="side-trigger"><i class="zim z-menu"></i></div>
       <nav>
         <ul>
-          <li><a href="/index.html"><i class="zim z-sy"></i><span>首页</span></a></li>
-          <li><a href="/lab.html"><i class="zim z-sys"></i><span>实验室</span></a></li>
-          <li><a href="/archives.html"><i class="zim z-gd"></i><span>归档</span></a></li>
-          <li><a href="/about.html"><i class="zim z-gy"></i><span>关于</span></a></li>
+          <li><a href="/blog/index.html"><i class="zim z-sy"></i><span>首页</span></a></li>
+          <li><a href="/blog/lab.html"><i class="zim z-sys"></i><span>实验室</span></a></li>
+          <li><a href="/blog/archives.html"><i class="zim z-gd"></i><span>归档</span></a></li>
+          <li><a href="/blog/about.html"><i class="zim z-gy"></i><span>关于</span></a></li>
         </ul>
       </nav>
     </aside>
@@ -46,7 +46,7 @@
           <p>而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 &lt;object&gt; 和 &lt;/object&gt; 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。</p>
           <p>先简单了解一下Object的参数和属性</p>
           <p>你可以采用object或者embed来装载，一般建议两个一起用。</p>
-          <p><a href="/pages/pdf/objT.html">这里有做了一个object和embed的知识的简单总结</a></p><code>
+          <p><a href="/blog/pages/pdf/objT.html">这里有做了一个object和embed的知识的简单总结</a></p><code>
             <p>&lt;object width=&quot;100%&quot; height=&quot;400&quot; name=&quot;objPdf&quot; style=&quot;border:1px solid grey;&quot; data=&quot;/assets/pdf/1.pdf&quot;&gt;</p>
             
             <p class="tin">&lt;embed src=&quot;/assets/pdf/1.pdf&quot; style=&quot;border:1px solid grey;&quot; id=&quot;embFlash&quot; width=&quot;100%&quot; height=150&gt;</p>
@@ -58,7 +58,7 @@
             <p>&lt;/object&gt;</p></code>
           <div class="eg">
             <div style="height:450px;">
-              <object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/assets/pdf/1.pdf" type="application/pdf">
+              <object width="100%" height="400" name="objPdf" style="border:1px solid grey;" data="/blog/assets/pdf/1.pdf" type="application/pdf">
                 <embed width="100%" height="400" id="embPdf" style="border:1px solid grey;" src="/assets/pdf/1.pdf" type="application/pdf">
               </object>
             </div>
@@ -108,11 +108,11 @@
           <div class="eg" id="pdfjsDemo" style="height:450px;overflow: auto;"></div>
           <div class="bpn">相关文档
             <ol>
-              <li><a href="/pages/pdf/objT.html">object和embed</a></li>
-              <li><a href="/pages/pdf/pcanvas.html">使用canvas来呈现内容</a></li>
-              <li><a href="/pages/pdf/pbase64.html">读取base64的数据</a></li>
-              <li><a href="/pages/pdf/ppages.html">自定义分页功能</a></li>
-              <li><a href="/pages/pdf/viewer.html">使用viewer</a></li>
+              <li><a href="/blog/pages/pdf/objT.html">object和embed</a></li>
+              <li><a href="/blog/pages/pdf/pcanvas.html">使用canvas来呈现内容</a></li>
+              <li><a href="/blog/pages/pdf/pbase64.html">读取base64的数据</a></li>
+              <li><a href="/blog/pages/pdf/ppages.html">自定义分页功能</a></li>
+              <li><a href="/blog/pages/pdf/viewer.html">使用viewer</a></li>
             </ol>
           </div>
         </div>
@@ -123,17 +123,17 @@
     </main>
   </body>
 </html>
-<script src="/index.min.js"></script>
-<script src="/libs/PDFObject/pdfobject.min.js"></script>
+<script src="/blog/index.min.js"></script>
+<script src="/blog/libs/PDFObject/pdfobject.min.js"></script>
 <script>
   var options = {
       page:2
   };
-  PDFObject.embed('/assets/pdf/1.pdf', '#pdfObject-container', options)
+  PDFObject.embed('/blog/assets/pdf/1.pdf', '#pdfObject-container', options)
 </script>
-<script src="/libs/pdfjs/build/pdf.min.js"></script>
+<script src="/blog/libs/pdfjs/build/pdf.min.js"></script>
 <script>
-  PDFJS.getDocument('/assets/pdf/1.pdf').then(function (pdf) {
+  PDFJS.getDocument('/blog/assets/pdf/1.pdf').then(function (pdf) {
       console.log(pdf.numPages)
       // var pageNumber = 1;
       for(var pageNumber = 1;pageNumber <= pdf.numPages; pageNumber++){
